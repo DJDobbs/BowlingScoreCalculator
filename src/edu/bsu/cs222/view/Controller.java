@@ -47,7 +47,7 @@ public class Controller {
         try {
             player.addRoll(toInteger(input));
         }catch (ArrayIndexOutOfBoundsException e){
-            e.getMessage();
+            ExceptionDialog warning = new ExceptionDialog("You inputed " + e.getMessage() + " times.");
         }
     }
 
@@ -63,9 +63,14 @@ public class Controller {
 
     @FXML
     protected void handleCreateButtonAction(ActionEvent event) {
-        Stage stage = new CustomizedStage(toInteger(teamAmount), toInteger(playerAmount)).getStage();
-        stage.show();
-        ((Node) (event.getSource())).getScene().getWindow().hide();
+        try {
+            Stage stage = new CustomizedStage(toInteger(teamAmount), toInteger(playerAmount)).getStage();
+            stage.show();
+            ((Node) (event.getSource())).getScene().getWindow().hide();
+        } catch (NullPointerException e){
+            e.getMessage();
+            ExceptionDialog warning = new ExceptionDialog("Please choose player amount and team amount.");
+        }
     }
 
 }

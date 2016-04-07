@@ -5,32 +5,28 @@ public class Frame {
     private boolean firstRoll = true;
     private int currentFrame = 1;
 
-    public void adjustCurrentFrame(int pinCount) {
+    public void checkForFrameChange(int pinCount) {
         if (firstRoll) {
-            if (isStrike(pinCount)) {
-                nextFrame();
-            } else {
-                firstRoll = false;
-            }
+            isStrike(pinCount);
         }else{
             firstRoll = true;
-            nextFrame();
+            advanceFrame();
         }
-    }
-
-    private void nextFrame(){
-        currentFrame = Math.min(10, currentFrame + 1);
-    }
-
-    private boolean isStrike(int pinCount){
-        if (pinCount == 10)
-            return true;
-        else
-            return false;
     }
 
     public int getCurrentFrame() {
         return currentFrame;
+    }
+
+    private void advanceFrame(){
+        currentFrame = Math.min(10, currentFrame + 1);
+    }
+
+    private void isStrike(int pinCount){
+        if (pinCount == 10)
+            advanceFrame();
+        else
+            firstRoll = false;
     }
 
 }
