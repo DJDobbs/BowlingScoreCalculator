@@ -31,10 +31,10 @@ public class FrameTest {
         g.addRoll(10);
         g.addRoll(10);
 
-        int expectedframe = 10;
-        int resultframe = g.frame.getCurrentFrame();
+        int expectedFrame = 10;
+        int resultFrame = g.frame.getCurrentFrame();
 
-        assertEquals(expectedframe, resultframe, .00001);
+        assertEquals(expectedFrame, resultFrame);
     }
 
 
@@ -48,7 +48,7 @@ public class FrameTest {
         int expectedframe = 3;
         int resultframe = g.frame.getCurrentFrame();
 
-        assertEquals(expectedframe, resultframe, .0001);
+        assertEquals(expectedframe, resultframe);
     }
 
     @Test
@@ -57,10 +57,10 @@ public class FrameTest {
         g.addRoll(5);
         g.addRoll(3);
 
-        int expectedframe=3;
-        int resultframe= g.frame.getCurrentFrame();
+        int expectedFrame=3;
+        int resultFrame= g.frame.getCurrentFrame();
 
-        assertEquals(expectedframe,resultframe, .00001 );
+        assertEquals(expectedFrame,resultFrame);
     }
 
 
@@ -70,10 +70,10 @@ public class FrameTest {
             g.addRoll(10);
             g.addRoll(9);
 
-        int expectedframe=10;
-        int resultframe=g.frame.getCurrentFrame();
+        int expectedFrame=10;
+        int resultFrame=g.frame.getCurrentFrame();
 
-        assertEquals(expectedframe,resultframe, .00001 );
+        assertEquals(expectedFrame,resultFrame);
     }
 
 }

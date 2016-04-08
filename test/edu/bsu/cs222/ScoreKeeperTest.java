@@ -20,10 +20,10 @@ public class ScoreKeeperTest {
     public void testOneRollNoMark() {
         g.addRoll(5);
 
-        int expectedscore=5;
-        int resultscore=g.getScore();
+        int expectedScore=5;
+        int resultScore=g.getScore();
 
-        assertEquals(expectedscore, resultscore, .00001);
+        assertEquals(expectedScore, resultScore);
     }
 
 
@@ -32,10 +32,10 @@ public class ScoreKeeperTest {
         g.addRoll(5);
         g.addRoll(3);
 
-        int expectedscore=8;
-        int resultscore=g.getScore();
+        int expectedScore=8;
+        int resultScore=g.getScore();
 
-        assertEquals(expectedscore, resultscore, .00001);
+        assertEquals(expectedScore, resultScore);
     }
 
 
@@ -46,10 +46,10 @@ public class ScoreKeeperTest {
         g.addRoll(4);
         g.addRoll(4);
 
-        int expectedscore=16;
-        int resultscore=g.getScore();
+        int expectedScore=16;
+        int resultScore=g.getScore();
 
-        assertEquals(expectedscore, resultscore, .00001);
+        assertEquals(expectedScore, resultScore);
 
     }
 
@@ -61,10 +61,10 @@ public class ScoreKeeperTest {
         g.addRoll(5);
         g.addRoll(4);
 
-        int expectedscore=24;
-        int resultscore=g.getScore();
+        int expectedScore=24;
+        int resultScore=g.getScore();
 
-        assertEquals(expectedscore, resultscore, .00001);
+        assertEquals(expectedScore, resultScore);
 
 
     }
@@ -77,10 +77,10 @@ public class ScoreKeeperTest {
         g.addRoll(10);
         g.addRoll(10);
 
-        int expectedscore=80;
-        int resultscore= g.frame.getCurrentFrame();
+        int expectedScore=80;
+        int resultScore= g.frame.getCurrentFrame();
 
-        assertEquals(expectedscore, resultscore, .00001);
+        assertEquals(expectedScore, resultScore);
     }
 
 
