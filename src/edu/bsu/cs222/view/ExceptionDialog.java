@@ -3,6 +3,7 @@ package edu.bsu.cs222.view;
 import javafx.scene.control.Alert;
 
 public class ExceptionDialog {
+
     private Alert alert;
 
     public ExceptionDialog(String warning) {
@@ -12,4 +13,5 @@ public class ExceptionDialog {
         alert.setContentText(warning);
         alert.showAndWait();
     }
+
 }

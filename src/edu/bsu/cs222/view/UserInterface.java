@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class UserInterface extends Application {
+
     private Parent basicDisplay;
 
     @Override
@@ -26,4 +27,5 @@ public class UserInterface extends Application {
             e.printStackTrace();
         }
     }
+
 }

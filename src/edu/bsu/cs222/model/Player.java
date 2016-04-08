@@ -11,6 +11,10 @@ public class Player {
         return score.getFrameScore((frame.getCurrentFrame()));
     }
 
+    public int getCurrentFrame(){
+        return frame.getCurrentFrame();
+    }
+
     public void addRoll(int pinCount) {
         score.rollKeeper[currentRoll++] = pinCount;
         frame.checkForFrameChange(pinCount);

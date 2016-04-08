@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CustomizedStage {
+
     private Stage secondaryStage;
     private int teamAmount;
     private int playerAmount;

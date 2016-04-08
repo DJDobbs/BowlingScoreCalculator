@@ -11,10 +11,13 @@
     <Button mnemonicParsing="false" onAction="#handleAddButtonAction" onKeyPressed="#handleKeyboardAction" text="Add" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
     <GridPane GridPane.columnIndex="1" GridPane.rowIndex="0">
       <children>
-        <Text id="currentTotalScore" text="Current Score:" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
-        <Text id="currentTotalScore" fx:id="currentScore" text="0" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <Text id="currentTotalScore" text="Last Roll:" textAlignment="CENTER" wrappingWidth="50.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
+        <Text id="currentTotalScore" fx:id="currentScore" text="0" textAlignment="CENTER" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <Text fx:id="currentFrame" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Current Frame:" textAlignment="CENTER" wrappingWidth="50.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="0" GridPane.valignment="CENTER" />
       </children>
       <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
       </columnConstraints>
       <rowConstraints>

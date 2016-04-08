@@ -11,11 +11,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Controller {
+
     private Player player = new Player();
+    private int total = 0;
+    private int frame = 0;
 
     @FXML
     public Text currentTotalScore;
     public Text currentScore;
+    public Text currentFrame;
     public ChoiceBox input;
     public ChoiceBox teamAmount;
     public ChoiceBox playerAmount;
@@ -33,14 +37,16 @@ public class Controller {
     }
 
     private void setOutput() {
+        calculateTotalScore();
         currentScore.setText(toString(input));
-        currentTotalScore.setText(String.valueOf(calculateTotalScore()));
+        currentTotalScore.setText(String.valueOf(total));
+        currentFrame.setText(String.valueOf(frame));
     }
 
-    private int calculateTotalScore() {
+    private void calculateTotalScore() {
         addPinScore();
-        int total = player.getScore();
-        return total;
+        total = player.getScore();
+        frame = player.getCurrentFrame();
     }
 
     private void addPinScore(){
