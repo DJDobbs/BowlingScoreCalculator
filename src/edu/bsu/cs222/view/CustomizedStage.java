@@ -1,32 +1,26 @@
 package edu.bsu.cs222.view;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Accordion;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TitledPane;
+import javafx.scene.*;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class CustomizedStage {
-
     private Stage secondaryStage;
     private int teamAmount;
     private int playerAmount;
     private Parent basicPlayer;
 
-    public CustomizedStage(int teamAmount, int playerAmount) {
-        this.teamAmount = teamAmount;
-        this.playerAmount = playerAmount;
+    public CustomizedStage(int teamAmountInput, int playerAmountInput) {
+        teamAmount = teamAmountInput;
+        playerAmount = playerAmountInput;
         setStage();
     }
 
     private void setStage() {
         secondaryStage = new Stage();
-        secondaryStage.setTitle("Bowling Calculator");
+        secondaryStage.setTitle("Bowling Score Calculator");
         secondaryStage.setScene(new Scene(createUnclosableTabPane(), 300, 275));
     }
 
@@ -41,29 +35,28 @@ public class CustomizedStage {
     }
 
     private Tab createTeamTab(String name) {
-        Accordion players = new Accordion();
+        Accordion playerDisplay = new Accordion();
         for (int i = 0; i < playerAmount; i++) {
             int playerNumber = i + 1;
-            players.getPanes().add(createPlayerPane("../view/playerpane.fxml", "Player " + playerNumber));
+            playerDisplay.getPanes().add(createPlayerPane("../view/playerpane.fxml", "Player " + playerNumber));
         }
-        return new Tab(name, players);
+        return new Tab(name, playerDisplay);
     }
 
-    private TitledPane createPlayerPane(String path, String name) {
-        readFXML(path);
-        return new TitledPane(name, basicPlayer.lookup("GridPane"));
+    private TitledPane createPlayerPane(String filePath, String paneName) {
+        readFXML(filePath);
+        return new TitledPane(paneName, basicPlayer.lookup("GridPane"));
     }
 
-    private void readFXML(String path) {
+    private void readFXML(String filePath) {
         try {
-            basicPlayer = FXMLLoader.load(getClass().getResource(path));
+            basicPlayer = FXMLLoader.load(getClass().getResource(filePath));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public Stage getStage() {
+    public Stage getSecondaryStage() {
         return secondaryStage;
     }
-
 }

@@ -1,87 +1,54 @@
 package edu.bsu.cs222;
 
 import edu.bsu.cs222.model.Player;
-import org.junit.Test;
-
-import static org.junit.Assert.*;
-
+import org.junit.*;
 
 public class ScoreKeeperTest {
+    private Player dummyPlayer;
 
-
-    private Player g = new Player();
-
-    @Test
-    public void TestScoreKeeper(){
-
+    @Before
+    public void setUpScoreKeeperTest() {
+        dummyPlayer = new Player();
     }
 
     @Test
     public void testOneRollNoMark() {
-        g.addRoll(5);
-
-        int expectedScore=5;
-        int resultScore=g.getScore();
-
-        assertEquals(expectedScore, resultScore);
-    }
-
-
-    @Test
-    public void testTwoRollsNoMark(){
-        g.addRoll(5);
-        g.addRoll(3);
-
-        int expectedScore=8;
-        int resultScore=g.getScore();
-
-        assertEquals(expectedScore, resultScore);
-    }
-
-
-    @Test
-    public void testFourRollsNoMark(){
-        g.addRoll(5);
-        g.addRoll(3);
-        g.addRoll(4);
-        g.addRoll(4);
-
-        int expectedScore=16;
-        int resultScore=g.getScore();
-
-        assertEquals(expectedScore, resultScore);
-
-    }
-
-
-    @Test
-    public void testSpare(){
-        g.addRoll(5);
-        g.addRoll(5);
-        g.addRoll(5);
-        g.addRoll(4);
-
-        int expectedScore=24;
-        int resultScore=g.getScore();
-
-        assertEquals(expectedScore, resultScore);
-
-
+        dummyPlayer.addNewBall(5);
+        Assert.assertEquals(5, dummyPlayer.getPlayerScore());
     }
 
     @Test
-    public void testTurkeyScore(){
-        g.addRoll(6);
-        g.addRoll(4);
-        g.addRoll(10);
-        g.addRoll(10);
-        g.addRoll(10);
-
-        int expectedScore=80;
-        int resultScore= g.frame.getCurrentFrame();
-
-        assertEquals(expectedScore, resultScore);
+    public void testTwoRollsNoMark() {
+        dummyPlayer.addNewBall(5);
+        dummyPlayer.addNewBall(3);
+        Assert.assertEquals(8, dummyPlayer.getPlayerScore());
     }
 
+    @Test
+    public void testFourRollsNoMark() {
+        dummyPlayer.addNewBall(5);
+        dummyPlayer.addNewBall(3);
+        dummyPlayer.addNewBall(4);
+        dummyPlayer.addNewBall(4);
+        Assert.assertEquals(16, dummyPlayer.getPlayerScore());
+    }
 
+    @Test
+    public void testSpare() {
+        dummyPlayer.addNewBall(5);
+        dummyPlayer.addNewBall(5);
+        dummyPlayer.addNewBall(5);
+        dummyPlayer.addNewBall(4);
+        Assert.assertEquals(24, dummyPlayer.getPlayerScore());
+    }
+
+    @Test
+    public void testTurkeyScore() {
+        dummyPlayer.addNewBall(6);
+        dummyPlayer.addNewBall(4);
+        dummyPlayer.addNewBall(10);
+        dummyPlayer.addNewBall(10);
+        dummyPlayer.addNewBall(10);
+        Assert.assertEquals(80, dummyPlayer.getPlayerScore());
+    }
 }
