@@ -1,46 +1,44 @@
 package edu.bsu.cs222.model;
 
 public class ScoreKeeper {
+    public int[] pinTracker = new int[21];
+    private int ballNumber = 0;
+    private int frameScore = 0;
 
-    public int[] rollKeeper = new int[21];
-    private int ball = 0;
-    private int score = 0;
-
-    public int getFrameScore(int frame) {
-        ball = 0;
-        score = 0;
-        for (int y = 0; y < frame; y++) {
-            int firstRoll = rollKeeper[ball++];
-            score += frameScoreCalc(firstRoll);
-        }
-        return score;
-    }
-
-    private int frameScoreCalc(int firstRoll){
-        int frameScore = 0;
-        if (firstRoll == 10)
-            frameScore += strikeCalc();
-        else {
-            int secondRoll = rollKeeper[ball++];
-            int totalPins = firstRoll + secondRoll;
-            frameScore = checkSpare(totalPins);
+    public int getFrameScore(int frameNumber) {
+        ballNumber = 0;
+        frameScore = 0;
+        for (int i = 0; i < frameNumber; i++) {
+            int firstRoll = pinTracker[ballNumber++];
+            frameScore += calculateFrameScore(firstRoll);
         }
         return frameScore;
     }
 
-    private int strikeCalc() {
-        int score = 10 + rollKeeper[ball] + rollKeeper[ball + 1];
-        return score;
+    private int calculateFrameScore(int firstRoll) {
+        int frameScore = 0;
+        if (firstRoll == 10)
+            frameScore += calculateStrikeValue();
+        else {
+            int secondRoll = pinTracker[ballNumber++];
+            int totalPins = firstRoll + secondRoll;
+            frameScore = checkForSpare(totalPins);
+        }
+        return frameScore;
     }
 
-    private int checkSpare(int totalPins) {
+    private int calculateStrikeValue() {
+        int strikeValue = 10 + pinTracker[ballNumber] + pinTracker[ballNumber + 1];
+        return strikeValue;
+    }
+
+    private int checkForSpare(int totalPins) {
         int frameScore;
         if (totalPins >= 10) {
-            frameScore = totalPins + rollKeeper[ball];
-        }else {
+            frameScore = totalPins + pinTracker[ballNumber];
+        } else {
             frameScore = totalPins;
         }
         return frameScore;
     }
-
 }

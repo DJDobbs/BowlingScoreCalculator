@@ -5,13 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.input.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class Controller {
-
     private Player player = new Player();
     private int total = 0;
     private int frame = 0;
@@ -45,15 +43,15 @@ public class Controller {
 
     private void calculateTotalScore() {
         addPinScore();
-        total = player.getScore();
-        frame = player.getCurrentFrame();
+        total = player.getPlayerScore();
+        frame = player.getCurrentPlayerFrame();
     }
 
-    private void addPinScore(){
+    private void addPinScore() {
         try {
-            player.addRoll(toInteger(input));
-        }catch (ArrayIndexOutOfBoundsException e){
-            ExceptionDialog warning = new ExceptionDialog("You inputed " + e.getMessage() + " times.");
+            player.addNewBall(toInteger(input));
+        } catch (ArrayIndexOutOfBoundsException e) {
+            ExceptionDialog warning = new ExceptionDialog("You input " + e.getMessage() + " times.");
         }
     }
 
@@ -70,13 +68,12 @@ public class Controller {
     @FXML
     protected void handleCreateButtonAction(ActionEvent event) {
         try {
-            Stage stage = new CustomizedStage(toInteger(teamAmount), toInteger(playerAmount)).getStage();
+            Stage stage = new CustomizedStage(toInteger(teamAmount), toInteger(playerAmount)).getSecondaryStage();
             stage.show();
             ((Node) (event.getSource())).getScene().getWindow().hide();
-        } catch (NullPointerException e){
+        } catch (NullPointerException e) {
             e.getMessage();
             ExceptionDialog warning = new ExceptionDialog("Please choose player amount and team amount.");
         }
     }
-
 }

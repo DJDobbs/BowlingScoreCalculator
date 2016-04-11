@@ -1,23 +1,20 @@
 package edu.bsu.cs222.model;
 
-
 public class Player {
+    private ScoreKeeper playerScore = new ScoreKeeper();
+    private FrameCounter playerFrame = new FrameCounter();
+    private int ballCount = 0;
 
-    public ScoreKeeper score = new ScoreKeeper();
-    public Frame frame = new Frame();
-    private int currentRoll = 0;
-
-    public int getScore() {
-        return score.getFrameScore((frame.getCurrentFrame()));
+    public int getPlayerScore() {
+        return playerScore.getFrameScore((playerFrame.getCurrentFrame()));
     }
 
-    public int getCurrentFrame(){
-        return frame.getCurrentFrame();
+    public int getCurrentPlayerFrame() {
+        return playerFrame.getCurrentFrame();
     }
 
-    public void addRoll(int pinCount) {
-        score.rollKeeper[currentRoll++] = pinCount;
-        frame.checkForFrameChange(pinCount);
+    public void addNewBall(int pinCount) {
+        playerScore.pinTracker[ballCount++] = pinCount;
+        playerFrame.checkForEndOfFrame(pinCount);
     }
-
 }
