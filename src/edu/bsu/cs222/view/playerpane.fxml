@@ -43,6 +43,7 @@
         <ChoiceBox fx:id="input" onKeyPressed="#handleKeyboardAction" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
           <items>
             <FXCollections fx:factory="observableArrayList">
+              <String fx:value="0" />
               <String fx:value="1" />
               <String fx:value="2" />
               <String fx:value="3" />
